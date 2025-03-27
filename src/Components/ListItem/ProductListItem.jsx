@@ -18,7 +18,7 @@ export default function ProductListItem({ product = {} }) {
                     <div className='row mb-2'>
                         <div className='col-1'>
                             {
-                                product.type === "veg" ? <img className='food-type' src='./veg.png' /> : <img className='food-type' src='./non-veg.jpg' />
+                                product.foodType === "veg" ? <img className='food-type' src='./veg.png' /> : <img className='food-type' src='./non-veg.jpg' />
                             }
                         </div>
                         <div className='col-1'>

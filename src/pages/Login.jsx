@@ -25,7 +25,7 @@ export default function Login() {
       if(result.success) {
         window.localStorage.setItem("_tk", result._tk)
         setLoggedIn(true)
-        navigator('/shop')
+        navigator('/')
       } else {
         alert('login failed')
       }

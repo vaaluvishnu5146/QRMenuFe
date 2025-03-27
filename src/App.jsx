@@ -11,26 +11,38 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavigationC from './Components/Navbar/navbar'
 import { useAuth } from './Context/Authentication.context'
 import NotFound from './pages/NotFound'
+import CreateProduct from './pages/CreateProduct'
+import Restaurants from './pages/Restaurants'
+import RestaurantListing from './pages/RestaurantListing'
 
 
 function App() {
-  const { loggedIn } = useAuth();
+  const { loggedIn, token } = useAuth();
+
   return (
     <div className='h-full'>
-      {loggedIn && <NavigationC />}
-      <Routes>
-        {!loggedIn ? <>
+      {!loggedIn && <Routes>
+          <>
           <Route path='/' Component={() => <Login />} />
           <Route path='/signup' Component={() => <Signup />} />
-          </> : <>
+          </> 
+      </Routes>}
+      {loggedIn && <>
+      <NavigationC />
+      <Routes>
+        <>
+          {token && token.role === "customer" && <Route path='/' Component={() => <Restaurants />} />}
+          {token && token.role === "customer" && <Route path='/restaurant/:restaurantId' Component={() => <RestaurantListing />} />}
           <Route path='/shop' Component={() => <Shop />} />
           <Route path='/Cart' Component={() => <Cart />} />
           <Route path='/orders' Component={() => <Orders />} />
-          <Route path='/settings' Component={() => <Settings />} />
+          {token && token.role === "admin" && <Route path='/settings' Component={() => <Settings />} />}
+          {token && token.role === "admin" && <Route path='/createProduct' Component={() => <CreateProduct />} />}
           <Route path='/orderplaced' Component={() => <OrderCompleted />} />
-        </>}
+        </>
         <Route path='*' Component={() => <NotFound />} />
       </Routes>
+      </>}
     </div>
   )
 }
