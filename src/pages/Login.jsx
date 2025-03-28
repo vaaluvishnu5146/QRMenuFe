@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Button, FormGroup, Input, Label } from 'reactstrap'
 import { useAuth } from '../Context/Authentication.context';
 export default function Login() {
@@ -64,6 +64,9 @@ export default function Login() {
               innerRef={passwordRef}
             />
           </FormGroup>
+          <div>
+            <p>Forgot Password? <Link to="/forgotpassword">Click here</Link></p>
+          </div>
           <Button color='primary' size='large' block onClick={handleLogin}>
             Login
           </Button>

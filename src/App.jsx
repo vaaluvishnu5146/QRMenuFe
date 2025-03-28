@@ -14,6 +14,9 @@ import NotFound from './pages/NotFound'
 import CreateProduct from './pages/CreateProduct'
 import Restaurants from './pages/Restaurants'
 import RestaurantListing from './pages/RestaurantListing'
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword'
+import VerifyToken from './pages/ForgotPassword/VerifyToken'
+import SetNewPassword from './pages/ForgotPassword/SetNewPassword'
 
 
 function App() {
@@ -25,6 +28,9 @@ function App() {
           <>
           <Route path='/' Component={() => <Login />} />
           <Route path='/signup' Component={() => <Signup />} />
+          <Route path='/forgotpassword' Component={() => <ForgotPassword />} />
+          <Route path='/verifytoken' Component={() => <VerifyToken />} />
+          <Route path='/createNewPassword' Component={() => <SetNewPassword />} />
           </> 
       </Routes>}
       {loggedIn && <>
